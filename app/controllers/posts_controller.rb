@@ -10,12 +10,16 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
-    # new_post_pathというPrefixを書くことで、"/blogs/new"というURLの指定をします、という意味になる。
-    #一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
-      redirect_to new_post_path, notice: "つぶやき作成しました！"
-    else
+    if params[:back]
       render :new
+    else
+      if @post.save
+      # new_post_pathというPrefixを書くことで、"/blogs/new"というURLの指定をします、という意味になる。
+      #一覧画面へ遷移して"つぶやきを作成しました！"とメッセージを表示します。
+        redirect_to new_post_path, notice: "つぶやき作成しました！"
+      else
+        render :new
+      end
     end
   end
 
@@ -26,7 +30,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(pot_params)
+    if @post.update(post_params)
       redirect_to posts_path, notice: "つぶやき編集しました！"
     else
       render :edit
@@ -40,6 +44,7 @@ class PostsController < ApplicationController
 
   def confirm
     @post = Post.new(post_params)
+    render :new if @post.invalid? 
   end
 
   private

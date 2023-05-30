@@ -1,1 +1,29 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  background-color : lightblue;
+  height: 100%;
+}
+  
+header {
+  background-color: rgba(247, 239, 17, 0.767);
+  height: 50px;
+  font-size: 1.5rem
+}
 
+footer {
+  background-color: rgba(127, 255, 191, 0.355);
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  display: table;
+
+}
+
+p {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}

@@ -3,8 +3,7 @@
 <%= form_with(model: @post, local: true) do |form| %>
   <%= form.hidden_field :content %>
 
-  <P>つぶやき<%= @post.content %></P>
+  <P>つぶやき:<%= @post.content %></P>
   <%= form.submit "登録する" %>
+  <%= form.submit '戻る', name: 'back' %> 
 <% end %>
-
-<%= form.submit '戻る', name: 'back' %> 
